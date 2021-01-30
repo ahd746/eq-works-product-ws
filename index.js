@@ -6,7 +6,7 @@ const limitRequests = require("./ipRateLimiter");
 const path = require("path");
 
 app.use(cors());
-app.use(limitRequests(60, 10));
+app.use(limitRequests(60, 100));
 app.use(express.static("client/build"));
 
 // configs come from standard PostgreSQL env vars
