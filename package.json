@@ -10,8 +10,7 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "dep": "cd client && npm install", 
-    "build": "cd client && npm run build", 
-    "heroku-postbuild": "npm run dep && npm run build"
+    "build": "cd client && npm run build" 
   },
   "repository": {
     "type": "git",
