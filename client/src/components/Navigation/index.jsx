@@ -6,6 +6,7 @@ const Navigation = () => {
     <div className="mb-4">
       <Navbar bg="dark" variant="dark" sticky="top">
         <Navbar.Brand>EQ Work</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse>
           <Nav className="mr-auto">
             <Nav.Link as={Link} to="/">
