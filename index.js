@@ -22,11 +22,7 @@ const queryHandler = (req, res, next) => {
     .catch(next);
 };
 
-app.get("*", (req, res) =>
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
-);
-
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("Welcome to EQ Works 😎");
 });
 
@@ -111,6 +107,10 @@ app.listen(process.env.PORT || 5555, (err) => {
     console.log(`Running on ${process.env.PORT || 5555}`);
   }
 });
+
+app.get("*", (req, res) =>
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+);
 
 // last resorts
 process.on("uncaughtException", (err) => {
