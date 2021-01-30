@@ -7,6 +7,7 @@ const path = require("path");
 
 app.use(cors());
 app.use(limitRequests(60, 10));
+app.use(express.static("client/build"));
 
 // configs come from standard PostgreSQL env vars
 // https://www.postgresql.org/docs/9.6/static/libpq-envars.html
@@ -20,6 +21,10 @@ const queryHandler = (req, res, next) => {
     })
     .catch(next);
 };
+
+app.get("*", (req, res) =>
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+);
 
 app.get("/", (req, res) => {
   res.send("Welcome to EQ Works 😎");
@@ -106,12 +111,6 @@ app.listen(process.env.PORT || 5555, (err) => {
     console.log(`Running on ${process.env.PORT || 5555}`);
   }
 });
-
-app.use(express.static("client/build"));
-
-app.get("*", (req, res) =>
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
-);
 
 // last resorts
 process.on("uncaughtException", (err) => {
