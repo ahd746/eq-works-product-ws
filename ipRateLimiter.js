@@ -8,7 +8,6 @@ class TokenBucket {
   }
 
   take() {
-    // Calculate how many tokens (if any) should have been added since the last request
     this.refill();
 
     if (this.tokens > 0) {
@@ -44,7 +43,7 @@ function limitRequests(perSecond, maxBurst) {
     if (bucketForIP.take()) {
       next();
     } else {
-      res.status(429).send("Client rate limit exceeded");
+      res.status(429).send("Too Many Requests");
     }
   };
 }
