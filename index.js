@@ -7,7 +7,7 @@ const path = require("path");
 
 app.use(cors());
 // 100 request/min
-app.use(limitRequests(60, 10));
+app.use(limitRequests(60, 100));
 app.use(express.static("client/build"));
 
 // configs come from standard PostgreSQL env vars

@@ -27,7 +27,6 @@ class TokenBucket {
       this.tokens + Math.floor(rate * this.capacity)
     );
     this.lastFilled = now;
-    console.log(this.tokens);
   }
 }
 
