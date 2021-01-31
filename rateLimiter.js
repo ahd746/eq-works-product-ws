@@ -33,7 +33,6 @@ class TokenBucket {
 function limitRequests(perSecond, maxBurst) {
   const buckets = new Map();
 
-  // Return an Express middleware function
   return function limitRequestsMiddleware(req, res, next) {
     if (!buckets.has(req.ip)) {
       buckets.set(req.ip, new TokenBucket(maxBurst, perSecond));

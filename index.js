@@ -2,11 +2,12 @@ const express = require("express");
 const pg = require("pg");
 const cors = require("cors");
 const app = express();
-const limitRequests = require("./ipRateLimiter");
+const limitRequests = require("./rateLimiter");
 const path = require("path");
 
 app.use(cors());
-app.use(limitRequests(60, 100));
+// 100 request/min
+app.use(limitRequests(60, 10));
 app.use(express.static("client/build"));
 
 // configs come from standard PostgreSQL env vars
